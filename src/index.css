@@ -23,15 +23,14 @@
     --color-primaryText-dark: #F1F1F1;
     --color-secondaryText-dark: #CCCCCC;
     --color-divider-dark: #333333;
-    
+
     /* FONTS */
     --font-heading: "Playfair Display", serif;
     --font-regular: "Inter", sans-serif;
 }
 
 @layer base {
-
-    * { cursor: default; }
+    p, ul, li, h1, h2, h3, h4, h5, h6 { cursor: default; }
 
     html {
         scroll-behavior: smooth;
@@ -43,7 +42,7 @@
         font-family: var(--font-regular);
     }
 
-    button {
+    button, a {
         cursor: pointer;
     }
 }

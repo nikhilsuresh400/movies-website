@@ -8,19 +8,19 @@
 @custom-variant dark (&:where(.dark, .dark *)); /* FOR DARK MODE */
 
 @theme { /* CUSTOM VARIABLES */
-    --color-theme-blue: #008DD5;
+    --color-theme-blue: #363CE1;
 
     /* LIGHT MODE COLORS */
-    --color-bg-light: #F5F5F5;
-    --color-surface-light: #ebebeb;
-    --color-primaryText-light: #161616;
+    --color-bg-light: #FBFBFE;
+    --color-surface-light: #f1f1f1;
+    --color-primaryText-light: #242424;
     --color-secondaryText-light: #7d7d7d;
     --color-divider-light: #BBBBBB;
 
     /* DARK MODE COLORS */
-    --color-bg-dark: #121212;
-    --color-surface-dark: #1D1D1D;
-    --color-primaryText-dark: #F1F1F1;
+    --color-bg-dark: #222222;
+    --color-surface-dark: #2e2e2e;
+    --color-primaryText-dark: #FBFBFE;
     --color-secondaryText-dark: #CCCCCC;
     --color-divider-dark: #333333;
 

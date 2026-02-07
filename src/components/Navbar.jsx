@@ -85,8 +85,28 @@ const Navbar = () => {
                         </svg>
                     </div>
 
-                    {/* SEARCH RESULT DROPDOWN CONDITIONAL RENDERING */}
-                    
+                    {/* MOBILE SEARCH RESULT CONDITIONAL RENDERING */}
+                    <div className='absolute mt-2 w-full bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50'>
+                        <ul className='divide-y divide-neutral-700'>
+                            {/* MAP METHOD */}
+                            <li className='hover:bg-surface-dark'>
+                                <button className='flex items-center p-3 w-full text-left'>
+                                    <div className='w-16 h-14 bg-surface-dark rounded-full overflow-hidden shrink-0'>
+                                        {/* CONDITIONAL RENDERING */}
+                                        <img 
+                                            src="" 
+                                            alt="" 
+                                            className='w-full h-full object-cover'
+                                        />
+                                        {/* ELSE */}
+                                        <div className=''>
+                                            
+                                        </div>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

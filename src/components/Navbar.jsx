@@ -1,4 +1,5 @@
 import React from 'react'
+import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi'
 
 const Navbar = () => {
     return (<header className={`flex w-full z-50 transition-all duration-300`}>
@@ -7,7 +8,7 @@ const Navbar = () => {
                 <div className='flex items-center'>
                     <a href="/" className='flex items-center'>
                         <span className='text-theme-blue font-semibold text-xl'>
-                            Watch<span className='text-primaryText-light'>Nest</span>
+                            Watch<span className='text-primaryText-dark'>Nest</span>
                         </span>
                     </a>
                 </div>
@@ -15,22 +16,22 @@ const Navbar = () => {
                 {/* DESKTOP NAVIGATIONS */}
                 <nav className='hidden md:flex space-x-8'>
                     <a href="#"
-                        className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                        className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                     >
                         Home
                     </a>
                     <a href="#trending"
-                        className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                        className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                     >
                         Trending
                     </a>
                     <a href="#popular"
-                        className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                        className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                     >
                         Popular
                     </a>
                     <a href="#top-rated"
-                        className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                        className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                     >
                         Top Rated
                     </a>
@@ -42,7 +43,7 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder='Search movies...'
-                            className='bg-surface-light text-primaryText-light border-divider-light px-4 py-2 rounded-full w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-theme-blue/70'
+                            className='bg-surface-light text-primaryText-light border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-theme-blue/70'
                         />
 
                         {/* CONDITIONAL RENDERING */}
@@ -86,11 +87,11 @@ const Navbar = () => {
                     </div>
 
                     {/* SEARCH RESULT DROPDOWN CONDITIONAL RENDERING */}
-                    <div className='absolute mt-2 w-72 bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50'>
-                        <ul className='divide-y divide-neutral-700'>
+                    <div className='absolute mt-2 w-72 bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50 border border-divider-dark'>
+                        <ul className='divide-y divide-divider-dark'>
                             <li className='hover:bg-surface-dark'>
                                 <button className='flex items-center p-3 w-full text-left'>
-                                    <div className='w-10 h-10 bg-surface-dark rounded overflow-hidden shrink-0'>
+                                    <div className='w-10 h-10 bg-surface-dark rounded-full overflow-hidden shrink-0'>
                                         {/* CONDITIONAL RENDERING */}
                                         <img
                                             src=""
@@ -118,7 +119,7 @@ const Navbar = () => {
                     </div>
 
                     {/* CONDITIONAL RENDERING */}
-                    <div className='absolute mt-2 w-72 bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50'>
+                    <div className='absolute mt-2 w-72 bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50 border border-divider-dark'>
                         <div className='p-4 text-center text-secondaryText-dark'>
                             No movies found...
                         </div>
@@ -128,58 +129,32 @@ const Navbar = () => {
                 {/* MOBILE MENU BUTTON */}
                 <button className='md:hidden text-primaryText-dark'>
                     {/* CONDITIONAL RENDERING */}
-                    <svg
-                        xmlns='"http://www.w3.org/2000/svg'
-                        className='h-6 w-6'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        stroke='#242424'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2}
-                            d='M6 18L18 6M6 6l12 12'
-                        />
-                    </svg>
+                    <HiOutlineMenuAlt3 className='text-xl' />
                     {/* ELSE */}
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='h-6 w-6'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        stroke='#242424'
-                    >
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            strokeWidth={2}
-                            d='M4 6h16M4 12h16M4 18h16'
-                        />
-                    </svg>
+                    <HiOutlineX  className='text-xl'/>
                 </button>
             </div>
 
             {/* MOBILE NAVIGATION CONDITIONAL RENDERING */}
-            <div className='mt-4 pb-4 space-y-4 md:hidden'>
+            <div className='mt-4 pb-4 space-y-4 md:hidden border'>
                 <a
                     href="#"
-                    className='block text-primaryText-light hover:text-theme-blue transition-colors py-2'
+                    className='block text-primaryText-dark hover:text-theme-blue transition-colors py-2'
                 >
                     Home
                 </a>
                 <a href="#trending"
-                    className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                    className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                 >
                     Trending
                 </a>
                 <a href="#popular"
-                    className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                    className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                 >
                     Popular
                 </a>
                 <a href="#top-rated"
-                    className='text-primaryText-light hover:text-theme-blue transition-all font-medium'
+                    className='text-primaryText-dark hover:text-theme-blue transition-all font-medium'
                 >
                     Top Rated
                 </a>
@@ -235,7 +210,7 @@ const Navbar = () => {
                                 <ul className='divide-y divide-neutral-700'>
                                     {/* MAP METHOD */}
                                     <li className='hover:bg-surface-dark'>
-                                        <button className='flex items-center p-3 w-full text-left'>
+                                        <button className='flex items-center p-3 w-full text-left border border-divider-dark'>
                                             <div className='w-14 h-14 bg-surface-dark rounded-full overflow-hidden shrink-0'>
                                                 {/* CONDITIONAL RENDERING */}
                                                 <img
@@ -263,7 +238,7 @@ const Navbar = () => {
                             </div>
 
                             {/* CONDITIONAL RENDERING */}
-                            <div className='absolute mt-2 w-full bg-bg-dark rounded-lg shadow-lg overflow-hidden z-50'>
+                            <div className='absolute mt-2 w-full bg-bg-dark rounded-lg shadow-lg border border-divider-dark overflow-hidden z-50'>
                                 <div className='p-4 text-center text-secondaryText-dark text-sm'>
                                     No movies found...
                                 </div>

@@ -8,7 +8,8 @@
 @custom-variant dark (&:where(.dark, .dark *)); /* FOR DARK MODE */
 
 @theme { /* CUSTOM VARIABLES */
-    --color-theme-blue: #363CE1;
+    --color-theme-blue: #E50914;
+    --color-theme-darkred: #B20710;
 
     /* LIGHT MODE COLORS */
     --color-bg-light: #FBFBFE;
@@ -19,9 +20,9 @@
 
     /* DARK MODE COLORS */
     --color-bg-dark: #222222;
-    --color-surface-dark: #2e2e2e;
+    --color-surface-dark: #282828;
     --color-primaryText-dark: #FBFBFE;
-    --color-secondaryText-dark: #CCCCCC;
+    --color-secondaryText-dark: #dbdbdb;
     --color-divider-dark: #333333;
 
     /* FONTS */
@@ -30,15 +31,15 @@
 }
 
 @layer base {
-    p, ul, li, h1, h2, h3, h4, h5, h6 { cursor: default; }
+    /* p, ul, li, h1, h2, h3, h4, h5, h6 { cursor: default; } */
 
     html {
         scroll-behavior: smooth;
     }
 
     body {
-        background-color: var(--color-bg-light);
-        color: var(--color-primaryText-light);
+        background-color: var(--color-bg-dark);
+        color: var(--color-primaryText-dark);
         font-family: var(--font-regular);
     }
 

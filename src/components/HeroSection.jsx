@@ -58,7 +58,7 @@ const HeroSection = () => {
                             Movie Overview
                         </p>
                         <div className='flex flex-wrap gap-4'>
-                            <button className='bg-theme-blue hover:bg-theme-darkred text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all'>
+                            <button className='bg-theme-red hover:bg-theme-darkred text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all'>
                                 <FaPlay />
                                 Watch Now
                             </button>

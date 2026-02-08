@@ -46,7 +46,7 @@ const MovieSlider = () => {
                                     <div
                                         className={`absolute inset-0 bg-linear-to-t from-neutral-900/90 via-neutral-900/40 to-transparent flex flex-col justify-end p-4 oopacity-0 group-hover:opacity-100 transition-all duration-300`}
                                     >
-                                        <div className='transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 space-y-3'>
+                                        <div className='transform translate-y-2 group-hover:-translate-y-2 transition-transform duration-300 space-y-3'>
                                             <div className='flex items-center justify-between'>
                                                 <div className='flex items-center space-x-1'>
                                                     <TiStar className='text-yellow-400 text-xl'/>
@@ -59,10 +59,9 @@ const MovieSlider = () => {
                                                 </span>
                                             </div>
                                             <button
-                                                className='w-full bg-theme-blue hover:bg-theme-darkred text-primaryText-dark py-3 rounded-md flex items-center justify-center gap-1 transition-all text-sm'
+                                                className='w-full bg-theme-red hover:bg-theme-darkred text-primaryText-dark py-3 rounded-md flex items-center justify-center gap-2 transition-all text-sm shadow-lg'
                                             >
-                                                <FaPlay />
-                                                View Details
+                                                <FaPlay /> View Details
                                             </button>
                                         </div>
                                     </div>

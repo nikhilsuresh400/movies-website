@@ -1,5 +1,6 @@
 import React from 'react'
 import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi'
+import { ImSpinner9 } from 'react-icons/im'
 import { LuSearch } from 'react-icons/lu'
 import { RiLoader2Fill } from 'react-icons/ri'
 
@@ -49,8 +50,8 @@ const Navbar = () => {
                         />
 
                         {/* CONDITIONAL RENDERING */}
-                        <div className='absolute right-3 top-2.5'>
-                            <RiLoader2Fill className='w-4 h-4 text-neutral-600'/>
+                        <div className='absolute right-3 top-3'>
+                            <ImSpinner9 className='w-3 h-3 text-neutral-500'/>
                         </div>
                         {/* ELSE */}
                         <LuSearch className='w-4 h-4 absolute right-3 top-2.5 text-neutral-500' />

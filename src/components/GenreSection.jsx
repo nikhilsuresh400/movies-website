@@ -1,4 +1,5 @@
 import { HiLightningBolt } from "react-icons/hi"
+import { ImSpinner9 } from "react-icons/im"
 import { IoIosInformationCircle } from "react-icons/io"
 import { LuInfo } from "react-icons/lu"
 import { TiStar } from "react-icons/ti"
@@ -8,7 +9,7 @@ const GenreSection = () => {
         <section className="py-12 bg-bg-dark/80" id="">
             <div className="container mx-auto px-4">
                 <h2 className="text-2xl md:text-3xl font-bold text-primaryText-dark mb-6">
-                    Browse by Gnere
+                    Browse by Genre
                 </h2>
 
                 {/* GENRE TABS */}
@@ -26,7 +27,10 @@ const GenreSection = () => {
                 {/* CONDITIONAL RENDERING */}
                 <div className="h-64 flex items-center justify-center">
                     <div className="animate-pulse">
-                        <div className="w-12 h-12 border-4 border-theme-red border-t-transparent rounded-full animate-spin"></div>
+                        {/* <div className="w-12 h-12 border-4 border-theme-red border-t-transparent rounded-full animate-spin"></div> */}
+                        <ImSpinner9
+                            className="w-14 h-14 text-theme-red animate-spin"
+                        />
                     </div>
                 </div>
 

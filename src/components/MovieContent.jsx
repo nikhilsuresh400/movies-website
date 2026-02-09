@@ -2,6 +2,7 @@ import React from 'react'
 import HeroSection from './HeroSection'
 import MovieSlider from './MovieSlider'
 import GenreSection from './GenreSection'
+import MoviesDetails from './MoviesDetails'
 
 const MovieContent = () => {
     return (
@@ -11,8 +12,11 @@ const MovieContent = () => {
                 <MovieSlider />
                 <GenreSection />
             </div>
+
+            {/* CONDITIONAL RENDERING */}
+            {/* <MoviesDetails /> */}
         </>
-    )
+    );
 }
 
 export default MovieContent

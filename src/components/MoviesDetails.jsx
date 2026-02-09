@@ -214,7 +214,7 @@ const MoviesDetails = () => {
                                         <p className="text-secondaryText-dark">No Rating Available</p>
                                     </div>
 
-                                    {/* IMDB & HOMAGE PAGE LINK */}
+                                    {/* IMDB & OFFICIAL WEBSITE LINK */}
                                     <div className="mt-8 space-y-4">
                                         {/* CONDITIONAL RENDERING */}
                                         <a 

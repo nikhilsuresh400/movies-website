@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi'
 import { ImSpinner9 } from 'react-icons/im'
 import { LuSearch } from 'react-icons/lu'
 import { RiLoader2Fill } from 'react-icons/ri'
 
 const Navbar = () => {
-    return (<header className={`flex w-full z-50 transition-all duration-300`}>
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuopen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    })
+
+
+    return (<header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-neutral-900/95 backdrop-blur-sm shadow-lg" : "bg-transparent"}`}>
         <div className='container mx-auto px-4 py-4'>
             <div className='flex items-center justify-between'>
                 <div className='flex items-center'>
@@ -46,7 +58,7 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder='Search movies...'
-                            className='bg-surface-light text-primaryText-light border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 transition-all duration-300 focus:outline-none'
+                            className='bg-surface-light text-primaryText-light border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 focus:ring-2 focus:ring-theme-red transition-all duration-300 focus:outline-none'
                         />
 
                         {/* CONDITIONAL RENDERING */}
@@ -98,11 +110,11 @@ const Navbar = () => {
                 </div>
 
                 {/* MOBILE MENU BUTTON */}
-                <button className='md:hidden text-primaryText-dark'>
+                <button onClick={()=>setIsMobileMenuopen(!isMobileMenuOpen)} className='md:hidden text-primaryText-dark'>
                     {/* CONDITIONAL RENDERING */}
-                    <HiOutlineMenuAlt3 className='text-xl' />
-                    {/* ELSE */}
-                    <HiOutlineX  className='text-xl'/>
+                    {isMobileMenuOpen 
+                    ? <HiOutlineMenuAlt3 className='text-xl' /> 
+                    : <HiOutlineX  className='text-xl'/>}
                 </button>
             </div>
 

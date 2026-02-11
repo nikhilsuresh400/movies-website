@@ -4,7 +4,7 @@ import { fetchGenres, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovi
 const MoviesContext = createContext();
 export const useMovies = () => useContext(MoviesContext);
 
-export const MoviesProvider = ({children}) => {
+export const MoviesProvider = ({ children }) => {
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -48,16 +48,16 @@ export const MoviesProvider = ({children}) => {
     };
 
     return <MoviesContext value={{
-        trendingMovies, 
-        popularMovies, 
-        topRatedMovies, 
-        genres, 
-        loading, 
-        error, 
-        selectedMovieId, 
-        openMoviesDetails, 
-        closeMoviesDetails}}
-    >
-        {children}
+        trendingMovies,
+        popularMovies,
+        topRatedMovies,
+        genres,
+        loading,
+        error,
+        selectedMovieId,
+        openMoviesDetails,
+        closeMoviesDetails
+    }}
+    >{children}
     </MoviesContext>
 }

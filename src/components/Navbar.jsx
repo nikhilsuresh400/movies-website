@@ -66,7 +66,7 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder='Search movies...'
-                            className='bg-surface-light text-primaryText-light border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 focus:ring-2 focus:ring-theme-red transition-all duration-300 focus:outline-none'
+                            className='bg-surface-dark text-primaryText-dark border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 focus:ring-2 focus:ring-theme-red transition-all duration-300 focus:outline-none'
                         />
 
                         {/* CONDITIONAL RENDERING */}
@@ -162,7 +162,7 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder='Search movies...'
-                            className='bg-surface-light text-primaryText-light border-divider-light px-4 py-2 rounded-full w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-theme-red/70'
+                            className='bg-surface-dark text-primaryText-dark border-divider-dark px-4 py-2 rounded-full w-48 focus:w-64 transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-theme-red/70'
                         />
 
                         {/* CONDITIONAL RENDERING */}

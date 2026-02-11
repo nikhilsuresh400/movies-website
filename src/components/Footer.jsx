@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaGithub, FaImdb, FaLinkedin, FaLinkedinIn } from 'react-icons/fa'
+import { LuLink } from 'react-icons/lu'
 
 const Footer = () => {
     return (
@@ -150,7 +151,7 @@ const Footer = () => {
                             <span className='hidden md:inline'>.</span>
                             Powered by{" "}
                             <a href="#" className='hover:text-primaryText-dark hover:underline underline-offset-4 transition-all'>
-                                TMDB API
+                                TMDB API.
                             </a>
                         </p>
                         <div className='fkex space-x-4 mt-4 md:mt-0 text-xs'>

@@ -1,10 +1,48 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 import { FaPlay } from 'react-icons/fa'
 import { TiStar } from 'react-icons/ti'
 import { getImageURL } from '../services/api'
+import { useMovies } from '../context/MoviesContext'
 
 const MovieSlider = ({ title, movies, subtitle = "" }) => {
+
+    const sliderRef = useRef(null);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const [hoveredMovieId, setHoveredMovieId] = useState(null);
+    const { openMoviesDetails } = useMovies();
+
+    const scroll = (direction) => {
+        if (isScrolling) return;
+        setIsScrolling(true);
+        const { current } = sliderRef;
+        const scrollAmount =
+            direction === "left"
+                ? -current.clientWidth * 0.75
+                : current.clientWidth * 0.75;
+
+        current.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth",
+        });
+
+        setTimeout(() => {
+            setIsScrolling(false);
+        }, 500);
+    };
+
+    const formatRating = (rating) => {
+        return (Math.round(rating * 10) / 10).toFixed(1);
+    };
+
+    const handleMovieClick = (moviesId) => {
+        openMoviesDetails(moviesId);
+    };
+
+    if (!movies || movies.length === 0) {
+        return null;
+    }
+
     return (
         <section className='py-12' id=''>
             <div className='container mx-auto px-4'>
@@ -19,12 +57,14 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
                         <button
                             className='p-2 rounded-full bg-surface-dark/80 hover:bg-neutral-700/50 text-primaryText-dark transition-all'
                             aria-label='Scroll Left'
+                            onClick={() => scroll("left")}
                         >
                             <BsChevronLeft className='text-lg font-bold' />
                         </button>
                         <button
                             className='p-2 rounded-full bg-surface-dark/80 hover:bg-neutral-700/50 text-primaryText-dark transition-all'
                             aria-label='Scroll right'
+                            onClick={() => scroll("right")}
                         >
                             <BsChevronRight className='text-lg font-bold' />
                         </button>
@@ -33,11 +73,18 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
 
                 {/* MOVIE SLIDER */}
                 <div className='relative'>
-                    <div className='flex space-x-4 overflow-x-hidden scrollbar-hide pb-4 snap-x'>
+                    <div ref={sliderRef}
+                        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                        className='flex space-x-4 overflow-x-hidden scrollbar-hide pb-4 snap-x'>
                         {/* CONDITIONAL RENDERING */}
                         {movies.map((movie) => {
                             return (
-                                <div key={movie.id} className='min-w-50 md:min-w-60 snap-start relative group cursor-pointer'>
+                                <div key={movie.id}
+                                    onMouseEnter={() => setHoveredMovieId(movie.id)}
+                                    onMouseLeave={() => setHoveredMovieId(null)}
+                                    onClick={() => handleMovieClick(movie.id)}
+                                    className='min-w-50 md:min-w-60 snap-start relative group cursor-pointer'
+                                >
                                     <div className='rounded-lg overflow-hidden bg-black/50'>
                                         <div className='relative aspect-2/3'>
                                             <img
@@ -55,11 +102,11 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
                                                         <div className='flex items-center space-x-1'>
                                                             <TiStar className='text-yellow-400 text-xl' />
                                                             <span className='text-yellow-400 text-sm font-medium'>
-                                                                Movies Vote Average
+                                                                {formatRating(movie.vote_average)}
                                                             </span>
                                                         </div>
                                                         <span className='text-secondaryText-dark text-sm'>
-                                                            Movies Release Date
+                                                            {movie.release_date?.substring(0, 4) || "N/A"}
                                                         </span>
                                                     </div>
                                                     <button
@@ -81,7 +128,7 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
                                             <div className='flex items-center space-x-1'>
                                                 <TiStar className='text-yellow-400 text-xl' />
                                                 <span className='text-secondaryText-dark/64 text-xs'>
-                                                    Movies Vote Average
+                                                    {formatRating(movie.vote_average)}
                                                 </span>
                                             </div>
                                             <span className='text-secondaryText-dark/64 text-xs'>

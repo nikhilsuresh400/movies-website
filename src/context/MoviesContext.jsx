@@ -56,7 +56,7 @@ export const MoviesProvider = ({ children }) => {
         error,
         selectedMovieId,
         openMoviesDetails,
-        closeMoviesDetails
+        closeMoviesDetails,
     }}
     >{children}
     </MoviesContext>

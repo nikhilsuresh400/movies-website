@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5"
 import { MdError } from "react-icons/md"
 import { TiStar } from "react-icons/ti"
 import { fetchMoviesDetails, getImageURL } from "../services/api"
+import { LuGlobe } from "react-icons/lu"
 
 const MoviesDetails = ({ movieId, onClose }) => {
 
@@ -57,10 +58,10 @@ const MoviesDetails = ({ movieId, onClose }) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-auto">
-            <div className="relative w-full max-w-5xl bg-neutral-900 rounded-lg shadow-xl max-h-[900vh] overflow-hidden">
-
+            <div className="relative w-full max-w-5xl bg-neutral-900 rounded-lg shadow-xl max-h-[90vh] overflow-y-auto">
                 {/* CLOSE BUTTON */}
-                <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface-dark/80 text-primaryText-dark hover:bg-neutral-700/60 transition-all">
+                <button onClick={onClose}
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-surface-dark/80 text-primaryText-dark hover:bg-neutral-700/60 transition-all">
                     <IoClose className="h-6 w-6" />
                 </button>
 
@@ -81,8 +82,8 @@ const MoviesDetails = ({ movieId, onClose }) => {
                                 <MdError
                                     className="h-16 w-16 mx-auto text-theme-darkred"
                                 />
-                                <h2 className="font-semibold mt-4">
-                                    Failed to Load Movies Details
+                                <h2 className="text-xl font-semibold mt-4">
+                                    Failed to Load Movie Details
                                 </h2>
                                 <p className="mt-2 text-secondaryText-dark">{error}</p>
                                 <button onClick={onClose} className="mt-6 bg-theme-red hover:bg-theme-darkred text-primaryText-dark px-6 py-2 rounded-md transition-colors">
@@ -207,175 +208,185 @@ const MoviesDetails = ({ movieId, onClose }) => {
                                         <div className="mt-8 flex flex-wrap gap-3">
                                             <button className="bg-theme-red hover:bg-theme-darkred text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-colors">
                                                 <FaPlay
-                                                    className="h-5 w-5"
+                                                    className="h-3 w-3"
                                                 />
                                                 Watch Now
                                             </button>
-                                            <div className="bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all">
+                                            <button className="bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all">
                                                 <BsFillBookmarkPlusFill
-                                                    className="h-5 w-5"
+                                                    className="h-3 w-3"
                                                 />
                                                 Add to Watchlist
-                                            </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {/* ADDDITIONAL DETAILS */}
+                                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div>
+                                        <h2 className="text-xl font-semibold text-primaryText-dark mb-4">
+                                            Details
+                                        </h2>
+                                        <div className="space-y-4">
+                                            {/* CONDITIONAL RENDERING */}
+                                            {movie.production_companies && movie.production_companies.length > 0 && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Production Companies
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">
+                                                        {movie.production_companies.map((company) => company.name).join(", ")}
+                                                    </p>
+                                                </div>
+                                            )}
+
+
+                                            {movie.production_countries && movie.production_countries.length > 0 && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Production Countries
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">
+                                                        {movie.production_countries.map((country) => country.name).join(", ")}
+                                                    </p>
+                                                </div>
+                                            )}
+
+
+                                            {movie.spoken_languages && movie.spoken_languages.length > 0 && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Languages
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">
+                                                        {movie.spoken_languages.map((language) => language.english_name).join(", ")}
+                                                    </p>
+                                                </div>
+                                            )}
+
+
+
+                                            {movie.budget > 0 && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Budget
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">{formatRevenue(movie.budget)}</p>
+                                                </div>
+                                            )}
+
+
+
+                                            {movie.revenue > 0 && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Revenue
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">{formatRevenue(movie.revenue)}</p>
+                                                </div>
+                                            )}
+
+
+                                            {movie.status && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Status
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">{movie.status}</p>
+                                                </div>
+                                            )}
+
+
+                                            {movie.original_language && (
+                                                <div>
+                                                    <h3 className="text-neutral-400 text-sm mb-1">
+                                                        Original Language
+                                                    </h3>
+                                                    <p className="text-primaryText-dark">
+                                                        {movie.original_language.toUpperCase()}
+                                                    </p>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
-                                    {/* ADDDITIONAL DETAILS */}
-                                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div>
-                                            <h2 className="text-xl font-semibold text-primaryText-dark mb-4">
-                                                Details
-                                            </h2>
-                                            <div className="space-y-4">
-                                                {/* CONDITIONAL RENDERING */}
-                                                {movie.production_companies && movie.production_companies.length > 0 && (
-                                                    <div className="text-secondaryText-darktext-sm mb-1">
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Production Companies
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">
-                                                            {movie.production_companies.map((company) => company.name).join(", ")}
-                                                        </p>
-                                                    </div>
-                                                )}
-
-
-                                                {movie.production_countries && movie.production_countries.length > 0 && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Production Countries
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">
-                                                            {movie.production_countries.map((country) => country.name).join(", ")}
-                                                        </p>
-                                                    </div>
-                                                )}
-
-
-                                                {movie.spoken_languages && movie.spoken_languages.length > 0 && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Languages
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">
-                                                            {movie.spoken_languages.map((language) => language.english_name).join(", ")}
-                                                        </p>
-                                                    </div>
-                                                )}
-
-
-
-                                                {movie.budget > 0 && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Budget
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">{formatRevenue(movie.budget)}</p>
-                                                    </div>
-                                                )}
-
-
-
-                                                {movie.revenue > 0 && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Revenue
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">{formatRevenue(movie.revenue)}</p>
-                                                    </div>
-                                                )}
-
-
-                                                {movie.status && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Status
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">{movie.status}</p>
-                                                    </div>
-                                                )}
-
-
-                                                {movie.original_language && (
-                                                    <div>
-                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                            Original Language
-                                                        </h3>
-                                                        <p className="text-primaryText-dark">
-                                                            {movie.original_language.toUpperCase()}
-                                                        </p>
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        {/* RIGHT COLUMN */}
-                                        <div>
-                                            <h2 className="text-xl font-semibold text-primaryText-dark mb-4">
-                                                Rating
-                                            </h2>
-                                            {/* CONDITIONAL RENDERING */}
-                                            {movie.vote_average > 0 ? (
-                                                <div className="flex items-center">
-                                                    <div className="w-24 h-24 rounded-full border-4 border-theme-darkred flex items-center justify-center mr-4">
-                                                        <span className="text-3xl font-bold">
-                                                            {formatRating(movie.vote_average)}
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-secondaryText-dark/70">
-                                                            From {movie.vote_count.toLocaleString()} votes
-                                                        </p>
-                                                        <div className="w-full bg-neutral-700 rounded-full h-2.5 mt-2">
-                                                            <div className="bg-theme-red h-2.5 rounded-full"
-                                                                style={{
-                                                                    width: `${(movie.vote_average / 10) * 100}%`,
-                                                                }}
-                                                            >
-                                                            </div>
+                                    {/* RIGHT COLUMN */}
+                                    <div>
+                                        <h2 className="text-xl font-semibold text-primaryText-dark mb-4">
+                                            Rating
+                                        </h2>
+                                        {/* CONDITIONAL RENDERING */}
+                                        {movie.vote_average > 0 ? (
+                                            <div className="flex items-center">
+                                                <div className="w-24 h-24 rounded-full border-4 border-theme-darkred flex items-center justify-center mr-4">
+                                                    <span className="text-3xl font-bold">
+                                                        {formatRating(movie.vote_average)}
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <p className="text-secondaryText-dark/70">
+                                                        From {movie.vote_count.toLocaleString()} votes
+                                                    </p>
+                                                    <div className="w-full bg-neutral-700 rounded-full h-2.5 mt-2">
+                                                        <div className="bg-theme-red h-2.5 rounded-full"
+                                                            style={{
+                                                                width: `${(movie.vote_average / 10) * 100}%`,
+                                                            }}
+                                                        >
                                                         </div>
                                                     </div>
                                                 </div>
-                                            )
-                                                :
-                                                <p className="text-secondaryText-dark">No Rating Available</p>
-                                            }
-                                        </div>
-
-                                        {/* IMDB & OFFICIAL WEBSITE LINK */}
-                                        <div className="mt-8 space-y-4">
+                                            </div>
+                                        )
+                                            :
+                                            <p className="text-secondaryText-dark">No Rating Available</p>
+                                        }
+                                        <div className="mt-8 space-y-4 flex gap-4">
                                             {/* CONDITIONAL RENDERING */}
                                             {movie.homepage && (
-                                                <a
-                                                    href={movie.homepage}
-                                                    className="inline-flex items-center bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-4 py-2 rounded transition-all"
-                                                >
-                                                    <HiOutlineGlobe
-                                                        className="h-5 w-5 mr-2"
-                                                    />
-                                                    Official Website
-                                                </a>
+                                                <div>
+                                                    <a
+                                                        href={movie.homepage}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-4 py-2 rounded transition-all"
+                                                    >
+                                                        <LuGlobe
+                                                            className="h-3 w-3 mr-2"
+                                                        />
+                                                        Official Website
+                                                    </a>
+                                                </div>
                                             )}
                                             {/* CONDITONAL RENDERING */}
                                             {movie.imdb_id && (
-                                                <a
-                                                    href={`https://www.imdb.com/title/${movie.imdb_id}`}
-                                                    className="inline-flex items-center bg-yellow-700 hover:bg-yellow-600 text-primaryText-dark px-4 py-2 rounded transition-colors"
-                                                >
-                                                    <FaImdb
-                                                        className="h-5 w-5 mr-2"
-                                                    />
-                                                    View on IMDB
-                                                </a>
+                                                <div>
+                                                    <a
+                                                        href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center bg-yellow-700 hover:bg-yellow-600 text-primaryText-dark px-4 py-2 rounded transition-colors"
+                                                    >
+                                                        <FaImdb
+                                                            className="h-3 w-3 mr-2"
+                                                        />
+                                                        View on IMDB
+                                                    </a>
+                                                </div>
                                             )}
                                         </div>
                                     </div>
+
+                                    {/* IMDB & OFFICIAL WEBSITE LINK */}
+
                                 </div>
                             </div>
                         </div>
                         : null}
             </div>
-        </div>
+        </div >
     );
 }
 

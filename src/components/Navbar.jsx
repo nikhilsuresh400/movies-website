@@ -91,7 +91,7 @@ const Navbar = () => {
                     >
                         Home
                     </a>
-                    <a href="trending"
+                    <a href="#trending"
                         className='text-primaryText-dark hover:text-theme-red transition-all font-medium'
                     >
                         Trending

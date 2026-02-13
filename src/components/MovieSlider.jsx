@@ -6,7 +6,7 @@ import { getImageURL } from '../services/api'
 import { useMovies } from '../context/MoviesContext'
 import { IoIosInformationCircle } from 'react-icons/io'
 
-const MovieSlider = ({ title, movies, subtitle = "" }) => {
+const MovieSlider = ({ title, id, movies, subtitle = "" }) => {
 
     const sliderRef = useRef(null);
     const [isScrolling, setIsScrolling] = useState(false);
@@ -45,7 +45,7 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
     }
 
     return (
-        <section className='py-12' id=''>
+        <section className='py-12' id={id}>
             <div className='container mx-auto px-4'>
                 <div className='flex items-baseline justify-between mb-8'>
                     <div className='text-2xl md:text-3xl font-bold text-primaryText-dark'>
@@ -113,7 +113,7 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
                                                     <button
                                                         className='w-full bg-theme-red hover:bg-theme-darkred text-primaryText-dark py-3 rounded-md flex items-center justify-center gap-2 transition-all text-sm shadow-lg'
                                                     >
-                                                        <IoIosInformationCircle  /> View Details
+                                                        <IoIosInformationCircle /> View Details
                                                     </button>
                                                 </div>
                                             </div>

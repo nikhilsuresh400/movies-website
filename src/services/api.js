@@ -1,5 +1,7 @@
 const API_KEY = '03d3e56205badbda979a5bc77cdf25dd';
+// OMDB - 305efc57
 const BASE_URL = 'https://api.themoviedb.org/3'
+// OMDB - http://www.omdbapi.com
 
 export const fetchTrendingMovies = async () => {
     try {

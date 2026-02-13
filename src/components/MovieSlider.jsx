@@ -4,6 +4,7 @@ import { FaPlay } from 'react-icons/fa'
 import { TiStar } from 'react-icons/ti'
 import { getImageURL } from '../services/api'
 import { useMovies } from '../context/MoviesContext'
+import { IoIosInformationCircle } from 'react-icons/io'
 
 const MovieSlider = ({ title, movies, subtitle = "" }) => {
 
@@ -112,7 +113,7 @@ const MovieSlider = ({ title, movies, subtitle = "" }) => {
                                                     <button
                                                         className='w-full bg-theme-red hover:bg-theme-darkred text-primaryText-dark py-3 rounded-md flex items-center justify-center gap-2 transition-all text-sm shadow-lg'
                                                     >
-                                                        <FaPlay /> View Details
+                                                        <IoIosInformationCircle  /> View Details
                                                     </button>
                                                 </div>
                                             </div>

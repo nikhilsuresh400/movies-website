@@ -1,3 +1,4 @@
+// 2:56:18
 import { useEffect, useState } from "react"
 import { BsFillBookmarkPlusFill } from "react-icons/bs"
 import { FaImdb, FaPlay } from "react-icons/fa"
@@ -49,7 +50,7 @@ const MoviesDetails = ({ movieId, onClose }) => {
         return new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
-            natation: "compact",
+            notation: "compact",
             maximumFractionDigits: 1,
         }).format(revenue);
     }
@@ -227,47 +228,84 @@ const MoviesDetails = ({ movieId, onClose }) => {
                                             </h2>
                                             <div className="space-y-4">
                                                 {/* CONDITIONAL RENDERING */}
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Production Companies
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Movies Production Countries</p>
-                                                </div>
+                                                {movie.production_companies && movie.production_companies.length > 0 && (
+                                                    <div className="text-secondaryText-darktext-sm mb-1">
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Production Companies
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">
+                                                            {movie.production_companies.map((company) => company.name).join(", ")}
+                                                        </p>
+                                                    </div>
+                                                )}
 
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Languages
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Langauge</p>
-                                                </div>
 
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Budget
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Movie Budget</p>
-                                                </div>
+                                                {movie.production_countries && movie.production_countries.length > 0 && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Production Countries
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">
+                                                            {movie.production_countries.map((country) => country.name).join(", ")}
+                                                        </p>
+                                                    </div>
+                                                )}
 
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Revenue
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Revenue</p>
-                                                </div>
 
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Status
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Status</p>
-                                                </div>
+                                                {movie.spoken_languages && movie.spoken_languages.length > 0 && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Languages
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">
+                                                            {movie.spoken_languages.map((language) => language.english_name).join(", ")}
+                                                        </p>
+                                                    </div>
+                                                )}
 
-                                                <div className="text-secondaryText-darktext-sm mb-1">
-                                                    <h3 className="text-secondaryText-dark text-sm mb-1">
-                                                        Original Language
-                                                    </h3>
-                                                    <p className="text-primaryText-dark">Original Language</p>
-                                                </div>
+
+
+                                                {movie.budget > 0 && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Budget
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">{formatRevenue(movie.budget)}</p>
+                                                    </div>
+                                                )}
+
+
+
+                                                {movie.revenue > 0 && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Revenue
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">{formatRevenue(movie.revenue)}</p>
+                                                    </div>
+                                                )}
+
+
+                                                {movie.status && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Status
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">{movie.status}</p>
+                                                    </div>
+                                                )}
+
+
+                                                {movie.original_language && (
+                                                    <div>
+                                                        <h3 className="text-secondaryText-dark text-sm mb-1">
+                                                            Original Language
+                                                        </h3>
+                                                        <p className="text-primaryText-dark">
+                                                            {movie.original_language.toUpperCase()}
+                                                        </p>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
 
@@ -277,45 +315,59 @@ const MoviesDetails = ({ movieId, onClose }) => {
                                                 Rating
                                             </h2>
                                             {/* CONDITIONAL RENDERING */}
-                                            <div className="flex items-center">
-                                                <div className="w-24 h-24 rounded-full border-4 border-theme-darkred flex items-center justify-center mr-4">
-                                                    <span className="text-3xl font-bold">
-                                                        Movie Average
-                                                    </span>
-                                                </div>
-                                                <div>
-                                                    <p className="text-secondaryText-dark/70">Votes</p>
-                                                    <div className="w-full bg-neutral-700 rounded-full h-2.5 mt-2">
-                                                        <div className="bg-theme-red h-2.5 rounded-full"></div>
+                                            {movie.vote_average > 0 ? (
+                                                <div className="flex items-center">
+                                                    <div className="w-24 h-24 rounded-full border-4 border-theme-darkred flex items-center justify-center mr-4">
+                                                        <span className="text-3xl font-bold">
+                                                            {formatRating(movie.vote_average)}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <p className="text-secondaryText-dark/70">
+                                                            From {movie.vote_count.toLocaleString()} votes
+                                                        </p>
+                                                        <div className="w-full bg-neutral-700 rounded-full h-2.5 mt-2">
+                                                            <div className="bg-theme-red h-2.5 rounded-full"
+                                                                style={{
+                                                                    width: `${(movie.vote_average / 10) * 100}%`,
+                                                                }}
+                                                            >
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            {/* ELSE */}
-                                            <p className="text-secondaryText-dark">No Rating Available</p>
+                                            )
+                                                :
+                                                <p className="text-secondaryText-dark">No Rating Available</p>
+                                            }
                                         </div>
 
                                         {/* IMDB & OFFICIAL WEBSITE LINK */}
                                         <div className="mt-8 space-y-4">
                                             {/* CONDITIONAL RENDERING */}
-                                            <a
-                                                href=""
-                                                className="inline-flex items-center bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-4 py-2 rounded transition-all"
-                                            >
-                                                <HiOutlineGlobe
-                                                    className="h-5 w-5 mr-2"
-                                                />
-                                                Official Website
-                                            </a>
+                                            {movie.homepage && (
+                                                <a
+                                                    href={movie.homepage}
+                                                    className="inline-flex items-center bg-neutral-700 hover:bg-neutral-600 text-primaryText-dark px-4 py-2 rounded transition-all"
+                                                >
+                                                    <HiOutlineGlobe
+                                                        className="h-5 w-5 mr-2"
+                                                    />
+                                                    Official Website
+                                                </a>
+                                            )}
                                             {/* CONDITONAL RENDERING */}
-                                            <a
-                                                href=""
-                                                className="inline-flex items-center bg-yellow-700 hover:bg-yellow-600 text-primaryText-dark px-4 py-2 rounded transition-colors"
-                                            >
-                                                <FaImdb
-                                                    className="h-5 w-5 mr-2"
-                                                />
-                                                View on IMDB
-                                            </a>
+                                            {movie.imdb_id && (
+                                                <a
+                                                    href={`https://www.imdb.com/title/${movie.imdb_id}`}
+                                                    className="inline-flex items-center bg-yellow-700 hover:bg-yellow-600 text-primaryText-dark px-4 py-2 rounded transition-colors"
+                                                >
+                                                    <FaImdb
+                                                        className="h-5 w-5 mr-2"
+                                                    />
+                                                    View on IMDB
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
@@ -324,7 +376,7 @@ const MoviesDetails = ({ movieId, onClose }) => {
                         : null}
             </div>
         </div>
-    )
+    );
 }
 
 export default MoviesDetails

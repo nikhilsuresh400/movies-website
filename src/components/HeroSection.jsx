@@ -49,7 +49,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div className='relative w-full h-screen'>
+        <div id='#' className='relative w-full h-screen'>
             {/* BACKDROP FOR MOVIES */}
             <div
                 className={`absolute inset-0 bg-cover bg-center bg-bg-dark transition-all duration-700 ${isTransitioning ? "opacity-0" : "opacity-100"}`}
@@ -104,11 +104,11 @@ const HeroSection = () => {
                             {currentMovie.overview}
                         </p>
                         <div className='flex flex-wrap gap-4'>
-                            <button className='bg-theme-red hover:bg-theme-darkred text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all'>
+                            <button className='w-36 md:w-42 bg-theme-red hover:bg-theme-darkred text-primaryText-dark px-3 py-3 rounded-lg flex items-center justify-center gap-2 transition-all border border-transparent'>
                                 <FaPlay />
                                 Watch Now
                             </button>
-                            <button className='bg-surface-dark/80 hover:bg-neutral-700/50 text-primaryText-dark px-6 py-3 rounded-lg flex items-center gap-2 transition-all border border-divider-light/25'>
+                            <button className='w-42 md:w-42 bg-surface-dark/80 hover:bg-neutral-700/50 text-primaryText-dark px-3 py-3 rounded-lg flex items-center justify-center gap-2 transition-all border border-divider-light/25'>
                                 <BsFillBookmarkPlusFill />
                                 Add to Watch List
                             </button>

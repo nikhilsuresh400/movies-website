@@ -150,7 +150,11 @@ const Footer = () => {
                             &copy; WatchNest. All rights reserved. <br className='md:hidden' />
                             <span className='hidden md:inline'>.</span>
                             Powered by{" "}
-                            <a href="#" className='hover:text-primaryText-dark hover:underline underline-offset-4 transition-all'>
+                            <a 
+                                href="https://www.themoviedb.org/?language=en-US"
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='hover:text-primaryText-dark hover:underline underline-offset-4 transition-all'>
                                 TMDB API.
                             </a>
                         </p>

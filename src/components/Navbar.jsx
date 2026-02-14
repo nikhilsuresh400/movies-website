@@ -126,7 +126,7 @@ const Navbar = () => {
                         {isSearching
                             ?
                             <div className='absolute right-3 top-3'>
-                                <ImSpinner9 className='w-3 h-3 text-neutral-500' />
+                                <ImSpinner9 className='w-3 h-3 text-neutral-500 animate-spin' />
                             </div>
                             :
                             <LuSearch className='w-4 h-4 absolute right-3 top-2.5 text-neutral-500' />
@@ -235,7 +235,7 @@ const Navbar = () => {
                         {isSearching
                             ?
                             <div className='absolute right-3 top-2.5'>
-                                <ImSpinner9 className='opacity-25' />
+                                <ImSpinner9 className='opacity-25 animate-spin' />
                             </div>
                             :
                             <div>

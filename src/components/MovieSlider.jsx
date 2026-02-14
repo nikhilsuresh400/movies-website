@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
-import { FaPlay } from 'react-icons/fa'
 import { TiStar } from 'react-icons/ti'
 import { getImageURL } from '../services/api'
 import { useMovies } from '../context/MoviesContext'
@@ -8,10 +7,10 @@ import { IoIosInformationCircle } from 'react-icons/io'
 
 const MovieSlider = ({ title, id, movies, subtitle = "" }) => {
 
+    const { openMoviesDetails } = useMovies();
     const sliderRef = useRef(null);
     const [isScrolling, setIsScrolling] = useState(false);
     const [hoveredMovieId, setHoveredMovieId] = useState(null);
-    const { openMoviesDetails } = useMovies();
 
     const scroll = (direction) => {
         if (isScrolling) return;

@@ -136,7 +136,7 @@ export const fetchTrendingMovies = async () => {
 export const fetchPopularMovies = async () => {
     try {
         const response = await fetch(
-            `/api/tmdb?path=movie/popular&language=en-US&page-1`
+            `/api/tmdb?path=movie/popular&language=en-US&page=1`
         );
 
         const data = await response.json();
@@ -150,7 +150,7 @@ export const fetchPopularMovies = async () => {
 export const fetchTopRatedMovies = async () => {
     try {
         const response = await fetch(
-            `/api/tmdb?path=movie/top_rated&language=en-US&page-1`
+            `/api/tmdb?path=movie/top_rated&language=en-US&page=1`
         );
 
         const data = await response.json();
@@ -164,7 +164,7 @@ export const fetchTopRatedMovies = async () => {
 export const fetchMoviesByGenre = async (genreId) => {
     try {
         const response = await fetch(
-            `/api/tmdb?path=discover/movie&language=en-US&with_genres=${genreId}&page-1`
+            `/api/tmdb?path=discover/movie&language=en-US&with_genres=${genreId}&page=1`
         );
 
         const data = await response.json();
@@ -208,7 +208,7 @@ export const searchMovies = async (searchQuery) => {
 
     try {
         const response = await fetch(
-            `/api/tmdb?path=search/movie&language=en-US&query=${encodeURIComponent(searchQuery)}&page-1&include_adult=false`
+            `/api/tmdb?path=search/movie&language=en-US&query=${encodeURIComponent(searchQuery)}&page=1&include_adult=false`
         );
 
         const data = await response.json();

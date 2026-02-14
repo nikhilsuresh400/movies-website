@@ -56,8 +56,8 @@ const HeroSection = () => {
                 style={{ backgroundImage: `url(${getImageURL(currentMovie.backdrop_path)})` }}
             >
                 {/* GRADIENT OVERLAY */}
-                <div className='absolute inset-0 bg-linear-to-r from-black via-black/70 to-black/20' />
-                <div className='absolute inset-0 bg-linear-to-r from-black to-transparent' />
+                <div className='absolute inset-0 bg-linear-to-r from-neutral-900 via-neutral-900/70 to-neutral-900/20' />
+                <div className='absolute inset-0 bg-linear-to-r from-neutral-900 to-transparent' />
             </div>
 
 

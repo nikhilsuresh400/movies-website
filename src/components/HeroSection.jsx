@@ -22,12 +22,12 @@ const HeroSection = () => {
         const interval = setInterval(() => {
             setIsTransitioning(true);
             setTimeout(() => {
-                setCurrentSlide((prev) => (prev + 1) & featuredMovies.length);
+                setCurrentSlide((prev) => (prev + 1) % featuredMovies.length);
                 setIsTransitioning(false);
             }, 500);
         }, 8000);
 
-        return () => clearInterval();
+        return () => clearInterval(interval);
     }, [loading, featuredMovies.length]);
 
     if (loading || featuredMovies.length === 0) {
